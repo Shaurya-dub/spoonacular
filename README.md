@@ -1,3 +1,2 @@
-# spoontacular
-A recipe fetching app using the spoontacular API
 # spoonacular
+A recipe fetching app using the spoonacular API
