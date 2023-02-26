@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <title>Recipes Here</title>
+  </head>
+  <body>
+    <header>
+      <div class="headWrapper">
+        <h1>Yummy For Your Tummy</h1>
+        <form class="recipeSearchForm" action="#">
+          <input
+            type="text"
+            class="recipeSearchInput"
+            aria-label="Please enter the name of the recipe you want to search"
+            required
+          />
+          <div class="cuisineFilterHolder">
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="African"
+              value="African"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="American"
+              value="American"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="British"
+              value="British"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Cajun"
+              value="Cajun"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Caribbean"
+              value="Caribbean"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Chinese"
+              value="Chinese"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Eastern European"
+              value="Eastern European"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="European"
+              value="European"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="French"
+              value="French"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="German"
+              value="German"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Greek"
+              value="Greek"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Indian"
+              value="Indian"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Irish"
+              value="Irish"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Italian"
+              value="Italian"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Japanese"
+              value="Japanese"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Jewish"
+              value="Jewish"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Korean"
+              value="Korean"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Latin American"
+              value="Latin American"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Mediterranean"
+              value="Mediterranean"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Mexican"
+              value="Mexican"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Middle Eastern"
+              value="Middle Eastern"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Nordic"
+              value="Nordic"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Southern"
+              value="Southern"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Spanish"
+              value="Spanish"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Thai"
+              value="Thai"
+            />
+            <input
+              type="checkbox"
+              class="cuisineFilter"
+              name="Vietnamese"
+              value="Vietnamese"
+            />
+          </div>
+          <button type="submit">Search!</button>
+        </form>
+      </div>
+    </header>
+    <section class="loadingScreen">
+      <div class="loadingImgHolder">
+        <img src="./media/chefLoading.gif" alt="loading" />
+      </div>
+    </section>
+    <main>
+      <div class="wrapper">
+        <ul class="recipeList" aria-live="polite"></ul>
+        <nav class="paginationContainer">
+          <button
+            class="paginationButton"
+            id="prevButton"
+            title="Previous page"
+            aria-label="Previous page"
+          >
+            &lt;
+          </button>
+
+          <div id="paginationNumbers"></div>
+
+          <button
+            class="paginationButton"
+            id="nextButton"
+            title="Next page"
+            aria-label="Next page"
+          >
+            &gt;
+          </button>
+        </nav>
+      </div>
+    </main>
+    <script type="module" src="../dist/bundle.js"></script>
+  </body>
+</html>
