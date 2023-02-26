@@ -87,3 +87,10 @@
     color: #fff;
     background: #0085b6;
 }
+.active {
+    background-color: green;
+}
+
+.hidden,.disabled {
+    display:none;
+}
