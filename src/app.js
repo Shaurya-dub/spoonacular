@@ -12,7 +12,7 @@ let pageCount;
 let cuisineFilterArray = [];
 recipeForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  document.querySelector(".loadingScreen").style.display = "block";
+  document.querySelector(".loadingScreen").style.display = "flex";
   const cuisineList = cuisineFilterArray.join(",");
   const searchQuery = recipeSearchInput.value;
   const request = await axios.get(
@@ -71,7 +71,7 @@ const appendPageNumber = (index) => {
 const getRecipeInfo = async (e) => {
   e.preventDefault();
   const recipeId = e.target.attributes[0].value;
-  // document.querySelector(".loadingScreen").style.display = "block";
+
   const request = await axios.get(
     `https://api.spoonacular.com/recipes/${recipeId}/information`,
     {
@@ -80,48 +80,62 @@ const getRecipeInfo = async (e) => {
       },
     }
   );
-  const recipeSummary = document.querySelector(".recipeSummary");
-  const recipeName = request.data.title;
-  const ingredientList = document.querySelector(".ingredientList");
-  const instructionsList = document.querySelector(".instructionsList");
-  const dietList = document.querySelector(".dietList");
-  const recipeInstructions = request.data.analyzedInstructions[0].steps;
-  const recipeIngredients = request.data.extendedIngredients;
-  const recipeImage = request.data.image;
-  const recipeDiet = request.data.diets;
+  if (request.data) {
+    const recipeSummary = document.querySelector(".recipeSummary");
+    const recipeName = request.data.title;
+    const ingredientList = document.querySelector(".ingredientList");
+    const instructionsList = document.querySelector(".instructionsList");
+    const dietList = document.querySelector(".dietList");
+    const recipeInstructions = request.data.analyzedInstructions[0].steps;
+    const recipeIngredients = request.data.extendedIngredients;
+    const recipeImage = request.data.image;
+    const recipeDiet = request.data.diets;
 
-  recipeSummary.innerHTML = ` <div class="recipeDetailsImageHolder"> <img src="${recipeImage}" alt="${recipeName}">
+    recipeSummary.innerHTML = ` <div class="recipeDetailsImageHolder"> <img src="${recipeImage}" alt="${recipeName}">
  </div> <h3 class="recipeDetailsTitle">${recipeName}</h3> `;
-  console.log("recipe data", request.data);
-  dietList.innerHTML = "";
-  ingredientList.innerHTML = "";
-  instructionsList.innerHTML = "";
-  if (recipeDiet) {
-    recipeDiet.map((el) => {
-      resultsLoop(dietList, el);
+    console.log("recipe data", request.data);
+    dietList.innerHTML = "";
+    ingredientList.innerHTML = "";
+    instructionsList.innerHTML = "";
+    if (recipeDiet) {
+      recipeDiet.map((el) => {
+        resultsLoop(dietList, el);
+      });
+    }
+    recipeIngredients.map((ing) => {
+      const ingredientStr = `${ing.amount} ${ing.unit} ${ing.name}`;
+      resultsLoop(ingredientList, ingredientStr);
+      // const listItem = document.createElement("li");
+      // listItem.innerText = `${ing.amount} ${ing.unit} ${ing.name}`;
+      // ingredientList.append(listItem);
     });
-  }
-  recipeIngredients.map((ing) => {
-    const ingredientStr = `${ing.amount} ${ing.unit} ${ing.name}`;
-    resultsLoop(ingredientList, ingredientStr);
-    // const listItem = document.createElement("li");
-    // listItem.innerText = `${ing.amount} ${ing.unit} ${ing.name}`;
-    // ingredientList.append(listItem);
-  });
 
-  recipeInstructions.map((rec) => {
-    console.log("new func");
-    resultsLoop(instructionsList, rec.step);
-    // const listItem = document.createElement("li");
-    // listItem.innerText = rec.step;
-    // instructionsList.append(listItem);
-  });
-  // instructions.innerHTML = recipeInstructions;
-  document
-    .querySelector(".modalClose")
-    .addEventListener("click", handleModalClose);
-  document.body.classList.add("modalOpen");
-  document.querySelector(".recipeModal").classList.remove("hidden");
+    recipeInstructions.map((rec) => {
+      console.log("new func");
+      resultsLoop(instructionsList, rec.step);
+      // const listItem = document.createElement("li");
+      // listItem.innerText = rec.step;
+      // instructionsList.append(listItem);
+    });
+    // instructions.innerHTML = recipeInstructions;
+    document.addEventListener(
+      "click",
+      (e) => {
+        console.log(e.target);
+        if (
+          e.target.matches(".closeButton") ||
+          !e.target.closest(".recipeDetailCard")
+        ) {
+          handleModalClose();
+        }
+      },
+      false
+    );
+    document.body.classList.add("modalOpen");
+    document.querySelector(".recipeModal").classList.remove("hidden");
+  } else {
+    console.error("empty response");
+  }
 };
 
 const resultsLoop = (appendTo, str) => {

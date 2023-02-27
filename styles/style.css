@@ -226,6 +226,17 @@ img {
   top: 0;
 }
 
+.loadingImgHolder {
+  width: 60%;
+  margin: auto;
+}
+
+.recipeSearchInput {
+  width: 70%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .cuisineFilterHolder {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -238,7 +249,7 @@ img {
 }
 
 .cuisineCheckboxHolder {
-  width: calc(30% - 53px);
+  width: 40%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -246,6 +257,7 @@ img {
       -ms-flex-align: center;
           align-items: center;
   margin: 10px;
+  font-size: 1.2rem;
 }
 
 .cuisineCheckboxHolder label {
@@ -296,6 +308,7 @@ img {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 0.2rem;
+  color: #cdd2d4;
 }
 
 .paginationNumber:hover,
@@ -319,7 +332,7 @@ img {
 body {
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), color-stop(100%), to(rgba(0, 0, 0, 0))), url(../../src/media/imakeadapasta.jpg);
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), 100%, rgba(0, 0, 0, 0)), url(../../src/media/imakeadapasta.jpg);
-  background-size: 100%;
+  background-size: cover;
   font-size: 1.5rem;
 }
 
@@ -389,7 +402,7 @@ body.modalOpen {
 }
 
 .recipeDetailCard {
-  width: 60%;
+  width: 80%;
   padding: 10px;
   background-color: white;
   margin: auto;
@@ -404,6 +417,7 @@ body.modalOpen {
       -ms-flex-align: start;
           align-items: flex-start;
   overflow-y: scroll;
+  max-width: 650px;
 }
 
 .modalClose {
@@ -425,6 +439,10 @@ body.modalOpen {
   padding-left: 10px;
 }
 
+.recipeDetailsTitle {
+  color: #573525;
+}
+
 .instructionsList li {
   margin: 20px;
 }
@@ -435,13 +453,39 @@ body.modalOpen {
 
 .dietList {
   list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0px;
 }
 
 .dietList li {
   background-color: rgba(127, 255, 212, 0.5176470588);
+  padding: 10px;
+  border-radius: 25px;
+  text-align: center;
+  margin: 10px;
 }
 
 .ingredientList:before, .instructionsList:before {
   content: attr(aria-label);
   font-weight: bold;
+}
+
+@media (max-width: 660px) {
+  .headWrapper {
+    width: 100%;
+    padding: initial;
+  }
+  .wrapper {
+    width: 100%;
+  }
+  .recipeCard {
+    width: 45%;
+  }
+}
+@media (max-width: 550px) {
+  .recipeCard {
+    width: 80%;
+  }
 }

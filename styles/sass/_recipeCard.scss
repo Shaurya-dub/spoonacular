@@ -12,7 +12,7 @@
     height:100vh;
 }
 .recipeDetailCard {
-    width:60%;
+    width:80%;
     padding:10px;
     background-color: white;
     margin:auto;
@@ -20,6 +20,7 @@
     flex-direction: column;
     align-items: flex-start;
     overflow-y:scroll;
+    max-width:650px;
 }
 .modalClose {
     width:40px;
@@ -37,7 +38,9 @@ width:100%
 .recipeHowTo {
     padding-left:10px;
 }
-
+.recipeDetailsTitle {
+    color:$caf-noir;
+}
 .instructionsList li {
     margin:20px;
 }
@@ -47,9 +50,16 @@ width:100%
 }
 .dietList {
     list-style: none;
+    display:flex;
+    // justify-content: space-evenly;
+    padding-left:0px;
 }
 .dietList li {
     background-color:#7fffd484;
+    padding:10px;
+    border-radius: 25px;
+    text-align:center;
+    margin:10px;
 }
 .ingredientList:before, .instructionsList:before {
     content: attr(aria-label);

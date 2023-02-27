@@ -48,6 +48,16 @@
     display: none;
     top: 0;
 }
+
+.loadingImgHolder {
+    width:60%;
+    margin:auto;
+}
+.recipeSearchInput {
+    width:70%;
+    text-align: center;
+    margin-bottom:20px;
+}
 .cuisineFilterHolder {
     display:flex;
     flex-wrap:wrap;
@@ -55,11 +65,12 @@
 }
 
 .cuisineCheckboxHolder {
-    width: calc((90% / 3) - 53px);
+    width: 40%;
     display:flex;
     // justify-content: space-between;
     align-items: center;
     margin:10px;
+    font-size:1.2rem;
 }
 
 .cuisineCheckboxHolder label {
@@ -102,6 +113,7 @@ white-space: nowrap;
     height: 2.5rem;
     width: 2.5rem;
     border-radius: .2rem;
+    color: $silver;
 }
 
 .paginationNumber:hover,
