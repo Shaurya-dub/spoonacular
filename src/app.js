@@ -15,16 +15,18 @@ recipeForm.addEventListener("submit", async (e) => {
   document.querySelector(".loadingScreen").style.display = "flex";
   const cuisineList = cuisineFilterArray.join(",");
   const searchQuery = recipeSearchInput.value;
-  const request = await axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch`,
-    {
+  const request = await axios
+    .get(`https://api.spoonacular.com/recipes/complexSearch`, {
       params: {
         apiKey: apiKey,
         cuisine: cuisineList,
         query: searchQuery,
       },
-    }
-  );
+    })
+    .catch((e) => {
+      console.error("uh-oh", e);
+      document.querySelector(".loadingScreen").style.display = "none";
+    });
   if (request.data.results.length > 0) {
     const recipeResults = request.data.results;
     console.log("req", recipeResults);
