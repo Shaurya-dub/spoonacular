@@ -212,6 +212,113 @@ html {
           box-sizing: inherit;
 }
 
+.loadingScreen {
+  background-color: rgba(94, 90, 90, 0.569);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 99;
+  display: none;
+  top: 0;
+}
+
+.cuisineFilterHolder {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.cuisineCheckboxHolder {
+  width: calc(30% - 53px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px;
+}
+
+.cuisineCheckboxHolder label {
+  white-space: nowrap;
+}
+
+.recipeList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-left: 0px;
+}
+
+.recipeCard {
+  color: #cdd2d4;
+  background-color: rgba(49, 42, 35, 0.7294117647);
+  width: calc(50% - 50px);
+  list-style: none;
+  margin: 10px;
+  padding: 10px 30px;
+  text-align: center;
+}
+
+.paginationContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  bottom: 0;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.paginationNumber,
+.paginationButton {
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 0.2rem;
+}
+
+.paginationNumber:hover,
+.paginationButton:not(.disabled):hover {
+  background: #fff;
+}
+
+.paginationNumber.active {
+  color: #fff;
+  background: #0085b6;
+}
+
+.active {
+  background-color: green;
+}
+
+.hidden, .disabled {
+  display: none;
+}
+
+body {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), color-stop(100%), to(rgba(0, 0, 0, 0))), url(../../src/media/imakeadapasta.jpg);
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), 100%, rgba(0, 0, 0, 0)), url(../../src/media/imakeadapasta.jpg);
+  background-size: 100%;
+  font-size: 1.5rem;
+}
+
 .headWrapper {
   width: 80%;
   margin: 0 auto;
@@ -221,7 +328,7 @@ html {
   text-align: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  background-color: rgb(7, 208, 131);
+  background-color: rgba(9, 9, 9, 0.602);
   color: white;
 }
 
@@ -258,69 +365,4 @@ html {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.recipeList {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  padding-left: 0px;
-}
-
-.recipeCard {
-  color: #fdfdfd;
-  background-color: rgb(4, 20, 188);
-  width: calc(50% - 50px);
-  list-style: none;
-  border: 2px solid black;
-  padding: 10px 30px;
-  text-align: center;
-}
-
-.paginationContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: absolute;
-  bottom: 0;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.paginationNumber,
-.paginationButton {
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: none;
-  margin: 0.25rem 0.25rem;
-  cursor: pointer;
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: 0.2rem;
-}
-
-.paginationNumber:hover,
-.paginationButton:not(.disabled):hover {
-  background: #fff;
-}
-
-.paginationNumber.active {
-  color: #fff;
-  background: #0085b6;
-}
-
-.active {
-  background-color: green;
-}
-
-.hidden, .disabled {
-  display: none;
 }

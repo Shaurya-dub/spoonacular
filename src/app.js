@@ -12,6 +12,7 @@ let pageCount;
 let cuisineFilterArray = [];
 recipeForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+  document.querySelector(".loadingScreen").style.display = "block";
   const cuisineList = cuisineFilterArray.join(",");
   const searchQuery = recipeSearchInput.value;
   const request = await axios.get(
@@ -50,8 +51,10 @@ recipeForm.addEventListener("submit", async (e) => {
         });
       }
     });
+    document.querySelector(".loadingScreen").style.display = "none";
   } else {
     console.error("empty response");
+    document.querySelector(".loadingScreen").style.display = "none";
   }
   //   const answer = await request.json();
 });

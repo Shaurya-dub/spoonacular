@@ -16,166 +16,224 @@
             type="text"
             class="recipeSearchInput"
             aria-label="Please enter the name of the recipe you want to search"
+            placeholder="Please enter the name of the recipe you want to search"
             required
           />
-          <div class="cuisineFilterHolder">
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="African"
-              value="African"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="American"
-              value="American"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="British"
-              value="British"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Cajun"
-              value="Cajun"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Caribbean"
-              value="Caribbean"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Chinese"
-              value="Chinese"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Eastern European"
-              value="Eastern European"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="European"
-              value="European"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="French"
-              value="French"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="German"
-              value="German"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Greek"
-              value="Greek"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Indian"
-              value="Indian"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Irish"
-              value="Irish"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Italian"
-              value="Italian"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Japanese"
-              value="Japanese"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Jewish"
-              value="Jewish"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Korean"
-              value="Korean"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Latin American"
-              value="Latin American"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Mediterranean"
-              value="Mediterranean"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Mexican"
-              value="Mexican"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Middle Eastern"
-              value="Middle Eastern"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Nordic"
-              value="Nordic"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Southern"
-              value="Southern"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Spanish"
-              value="Spanish"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Thai"
-              value="Thai"
-            />
-            <input
-              type="checkbox"
-              class="cuisineFilter"
-              name="Vietnamese"
-              value="Vietnamese"
-            />
+          <div>
+            <fieldset class="cuisineFilterHolder">
+              <legend>What Cuisines Do You Want To Filter By?</legend>
+              <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="African"
+                  value="African"
+                />
+                <label for="African">African</label>
+              </div>
+              <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="American"
+                  value="American"
+                />
+                <label for="American">American</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="British"
+                  value="British"
+                />
+                <label for="British">British</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Cajun"
+                  value="Cajun"
+                />
+                <label for="Cajun">Cajun</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Caribbean"
+                  value="Caribbean"
+                />
+                <label for="Caribbean">Caribbean</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Chinese"
+                  value="Chinese"
+                />
+                <label for="Chinese">Chinese</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Eastern European"
+                  value="Eastern European"
+                />
+                <label for="Eastern European">Eastern European</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="European"
+                  value="European"
+                />
+                <label for="European">European</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="French"
+                  value="French"
+                />
+                <label for="French">French</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="German"
+                  value="German"
+                />
+                <label for="German">German</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Greek"
+                  value="Greek"
+                />
+                <label for="Greek">Greek</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Indian"
+                  value="Indian"
+                />
+                <label for="Indian">Indian</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Irish"
+                  value="Irish"
+                />
+                <label for="Irish">Irish</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Italian"
+                  value="Italian"
+                />
+                <label for="Italian">Italian</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Japanese"
+                  value="Japanese"
+                />
+                <label for="Japanese">Japanese</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Jewish"
+                  value="Jewish"
+                />
+                <label for="Jewish">Jewish</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Korean"
+                  value="Korean"
+                />
+                <label for="Korean">Korean</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Latin American"
+                  value="Latin American"
+                />
+                <label for="Latin American">Latin American</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Mediterranean"
+                  value="Mediterranean"
+                />
+                <label for="Mediterranean">Mediterranean</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Mexican"
+                  value="Mexican"
+                />
+                <label for="Mexican">Mexican</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Middle Eastern"
+                  value="Middle Eastern"
+                />
+                <label for="Middle Eastern">Middle Eastern</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Nordic"
+                  value="Nordic"
+                />
+                <label for="Nordic">Nordic</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Southern"
+                  value="Southern"
+                />
+                <label for="Southern">Southern</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Spanish"
+                  value="Spanish"
+                />
+                <label for="Spanish">Spanish</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Thai"
+                  value="Thai"
+                />
+                <label for="Thai">Thai</label>
+              </div>  <div class="cuisineCheckboxHolder">
+                <input
+                  type="checkbox"
+                  class="cuisineFilter"
+                  name="Vietnamese"
+                  value="Vietnamese"
+                />
+                <label for="Vietnamese">Vietnamese</label>
+              </div>
           </div>
+        </fieldset>
           <button type="submit">Search!</button>
         </form>
       </div>
