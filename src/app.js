@@ -68,14 +68,66 @@ const appendPageNumber = (index) => {
   paginationNumbers.appendChild(pageNumber);
 };
 
+const getRecipeInfo = async (e) => {
+  e.preventDefault();
+  const recipeId = e.target.attributes[0].value;
+  // document.querySelector(".loadingScreen").style.display = "block";
+  const request = await axios.get(
+    `https://api.spoonacular.com/recipes/${recipeId}/information`,
+    {
+      params: {
+        apiKey: apiKey,
+      },
+    }
+  );
+  const recipeSummary = document.querySelector(".recipeSummary");
+  const recipeName = request.data.title;
+  const ingredientList = document.querySelector(".ingredientList");
+  const instructionsList = document.querySelector(".instructionsList");
+  const recipeInstructions = request.data.analyzedInstructions[0].steps;
+  const recipeIngredients = request.data.extendedIngredients;
+  const recipeImage = request.data.image;
+  const recipeDiet = request.data.diets;
+  recipeSummary.innerHTML = ` <div class="recipeDetailsImageHolder"> <img src="${recipeImage}" alt="${recipeName}">
+ </div> <h3 class="recipeDetailsTitle">${recipeName}</h3> `;
+  console.log("recipe data", request.data);
+  ingredientList.innerHTML = "";
+  instructionsList.innerHTML = "";
+  recipeIngredients.map((ing) => {
+    const listItem = document.createElement("li");
+    listItem.innerText = `${ing.amount} ${ing.unit} ${ing.name}`;
+    ingredientList.append(listItem);
+  });
+
+  recipeInstructions.map((rec) => {
+    const listItem = document.createElement("li");
+    listItem.innerText = rec.step;
+    instructionsList.append(listItem);
+  });
+  // instructions.innerHTML = recipeInstructions;
+  document
+    .querySelector(".modalClose")
+    .addEventListener("click", handleModalClose);
+  document.querySelector(".recipeModal").classList.remove("hidden");
+};
+
 const recipeDisplayFunction = (rec) => {
   const recipeListItem = document.createElement("li");
   recipeListItem.setAttribute("tabindex", 0);
   recipeListItem.classList.add("recipeCard");
+  const recipeBtn = document.createElement("button");
+  recipeBtn.innerText = "Show Recipe";
+  recipeBtn.setAttribute("data-id", rec.id);
+  recipeBtn.addEventListener("click", getRecipeInfo);
   recipeListItem.innerHTML = ` 
 <div class="recipeImageHolder"><img src="${rec.image}" alt="picture of ${rec.title}"></div>
 <h2>${rec.title}</h2>`;
+  recipeListItem.appendChild(recipeBtn);
   recipeList.appendChild(recipeListItem);
+};
+
+const handleModalClose = () => {
+  document.querySelector(".recipeModal").classList.add("hidden");
 };
 
 const setCurrentPage = (pageNum, recipes) => {

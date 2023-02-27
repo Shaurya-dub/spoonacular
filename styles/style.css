@@ -207,6 +207,10 @@ html {
           box-sizing: border-box;
 }
 
+img {
+  width: 100%;
+}
+
 *, *:before, *:after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
@@ -365,4 +369,63 @@ body {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.recipeModal {
+  background-color: rgba(10, 10, 10, 0.5294117647);
+  width: 100vw;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+}
+
+.recipeDetailCard {
+  width: 60%;
+  padding: 10px;
+  background-color: white;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  overflow-y: scroll;
+}
+
+.modalClose {
+  width: 40px;
+  background-color: transparent;
+  border: none;
+}
+
+.recipeSummary {
+  text-align: center;
+  width: 100%;
+}
+
+.recipeSummary img {
+  width: 100%;
+}
+
+.recipeHowTo {
+  padding-left: 10px;
+}
+
+.instructionsList li {
+  margin: 20px;
+}
+
+.ingredientList li {
+  margin: 10px;
+}
+
+.ingredientList:before, .instructionsList:before {
+  content: attr(aria-label);
+  font-weight: bold;
 }

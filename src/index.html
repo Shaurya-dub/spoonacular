@@ -245,6 +245,16 @@
     </section>
     <main>
       <div class="wrapper">
+        <section class="recipeModal hidden">
+          <div class="recipeDetailCard">
+            <button class="modalClose" aria-label="Close"><img src="./media/close.png" alt="close"></button>
+            <div class="recipeSummary"></div>
+            <div class="recipeHowTo">
+              <ul aria-label="Ingredients" class="ingredientList"></ul>
+              <ol aria-label="Instructions" class="instructionsList"></ol>
+            </div>
+          </div>
+        </section>
         <ul class="recipeList" aria-live="polite"></ul>
         <nav class="paginationContainer">
           <button
