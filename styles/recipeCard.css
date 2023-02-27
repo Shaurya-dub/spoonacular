@@ -1,0 +1,68 @@
+.recipeModal {
+  background-color: rgba(10, 10, 10, 0.5294117647);
+  width: 100vw;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+.recipeDetailCard {
+  width: 60%;
+  padding: 10px;
+  background-color: white;
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  overflow-y: scroll;
+}
+
+.modalClose {
+  width: 40px;
+  background-color: transparent;
+  border: none;
+}
+
+.recipeSummary {
+  text-align: center;
+  width: 100%;
+}
+
+.recipeSummary img {
+  width: 100%;
+}
+
+.recipeHowTo {
+  padding-left: 10px;
+}
+
+.instructionsList li {
+  margin: 20px;
+}
+
+.ingredientList li {
+  margin: 10px;
+}
+
+.dietList {
+  list-style: none;
+}
+
+.dietList li {
+  background-color: rgba(127, 255, 212, 0.5176470588);
+}
+
+.ingredientList:before, .instructionsList:before {
+  content: attr(aria-label);
+  font-weight: bold;
+}

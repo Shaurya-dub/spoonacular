@@ -4,10 +4,12 @@
     background-color: #0a0a0a87;
     width: 100vw;
     // height: 100vw;
-    position: absolute;
+    position: fixed;
     z-index: 99;
     top:0;
     left:0;
+    overflow-y:scroll;
+    height:100vh;
 }
 .recipeDetailCard {
     width:60%;
@@ -42,6 +44,12 @@ width:100%
 
 .ingredientList li{
     margin:10px;
+}
+.dietList {
+    list-style: none;
+}
+.dietList li {
+    background-color:#7fffd484;
 }
 .ingredientList:before, .instructionsList:before {
     content: attr(aria-label);

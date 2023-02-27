@@ -84,31 +84,50 @@ const getRecipeInfo = async (e) => {
   const recipeName = request.data.title;
   const ingredientList = document.querySelector(".ingredientList");
   const instructionsList = document.querySelector(".instructionsList");
+  const dietList = document.querySelector(".dietList");
   const recipeInstructions = request.data.analyzedInstructions[0].steps;
   const recipeIngredients = request.data.extendedIngredients;
   const recipeImage = request.data.image;
   const recipeDiet = request.data.diets;
+
   recipeSummary.innerHTML = ` <div class="recipeDetailsImageHolder"> <img src="${recipeImage}" alt="${recipeName}">
  </div> <h3 class="recipeDetailsTitle">${recipeName}</h3> `;
   console.log("recipe data", request.data);
+  dietList.innerHTML = "";
   ingredientList.innerHTML = "";
   instructionsList.innerHTML = "";
+  if (recipeDiet) {
+    recipeDiet.map((el) => {
+      resultsLoop(dietList, el);
+    });
+  }
   recipeIngredients.map((ing) => {
-    const listItem = document.createElement("li");
-    listItem.innerText = `${ing.amount} ${ing.unit} ${ing.name}`;
-    ingredientList.append(listItem);
+    const ingredientStr = `${ing.amount} ${ing.unit} ${ing.name}`;
+    resultsLoop(ingredientList, ingredientStr);
+    // const listItem = document.createElement("li");
+    // listItem.innerText = `${ing.amount} ${ing.unit} ${ing.name}`;
+    // ingredientList.append(listItem);
   });
 
   recipeInstructions.map((rec) => {
-    const listItem = document.createElement("li");
-    listItem.innerText = rec.step;
-    instructionsList.append(listItem);
+    console.log("new func");
+    resultsLoop(instructionsList, rec.step);
+    // const listItem = document.createElement("li");
+    // listItem.innerText = rec.step;
+    // instructionsList.append(listItem);
   });
   // instructions.innerHTML = recipeInstructions;
   document
     .querySelector(".modalClose")
     .addEventListener("click", handleModalClose);
+  document.body.classList.add("modalOpen");
   document.querySelector(".recipeModal").classList.remove("hidden");
+};
+
+const resultsLoop = (appendTo, str) => {
+  const listItem = document.createElement("li");
+  listItem.innerText = `${str}`;
+  appendTo.append(listItem);
 };
 
 const recipeDisplayFunction = (rec) => {
@@ -127,6 +146,7 @@ const recipeDisplayFunction = (rec) => {
 };
 
 const handleModalClose = () => {
+  document.body.classList.remove("modalOpen");
   document.querySelector(".recipeModal").classList.add("hidden");
 };
 

@@ -46,3 +46,9 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+body.modalOpen {
+    height: 100vh;
+    overflow-y: hidden;
+    padding-right: 15px; /*Accounting for scrollbar width */
+}
