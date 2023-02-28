@@ -1,0 +1,19 @@
+@media (max-width:660px) {
+    .headWrapper {
+        width:100%;
+        padding:initial;
+    }
+    .wrapper {
+        width:100%;
+    }
+    .recipeCard {
+        width:45%;
+    }
+}
+
+@media (max-width:550px) {
+    .recipeCard {
+        width: 80%;
+    }
+}
+
