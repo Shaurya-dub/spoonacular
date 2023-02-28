@@ -1,5 +1,5 @@
-import { apiKey } from "./spoonacular";
-const axios = require("axios").default;
+// import { apiKey } from "./spoonacular";
+// const axios = require("axios").default;
 const recipeForm = document.querySelector(".recipeSearchForm");
 const recipeList = document.querySelector(".recipeList");
 const recipeSearchInput = document.querySelector(".recipeSearchInput");
@@ -15,20 +15,23 @@ recipeForm.addEventListener("submit", async (e) => {
   document.querySelector(".loadingScreen").style.display = "flex";
   const cuisineList = cuisineFilterArray.join(",");
   const searchQuery = recipeSearchInput.value;
-  const request = await axios
-    .get(`https://api.spoonacular.com/recipes/complexSearch`, {
-      params: {
-        apiKey: apiKey,
-        cuisine: cuisineList,
-        query: searchQuery,
-      },
-    })
+  // const request = await axios
+  //   .get(`https://api.spoonacular.com/recipes/complexSearch`, {
+  //     params: {
+  //       apiKey: apiKey,
+  //       cuisine: cuisineList,
+  //       query: searchQuery,
+  //     },
+  //   })
+  const initCall = await fetch(`/.netlify/functions/hideKey?cuisineList=${cuisineList}&searchQuery=${searchQuery}`)
+  const request = await initCall.json()
     .catch((e) => {
       console.error("uh-oh", e);
       document.querySelector(".loadingScreen").style.display = "none";
     });
-  if (request.data.results.length > 0) {
-    const recipeResults = request.data.results;
+    console.log('request is',request.json);
+  if (request.results.length > 0) {
+    const recipeResults = request.results;
     console.log("req", recipeResults);
     recipeList.innerHTML = "";
     pageCount = Math.ceil(recipeResults.length / paginationLimit);
@@ -74,28 +77,25 @@ const getRecipeInfo = async (e) => {
   e.preventDefault();
   const recipeId = e.target.attributes[0].value;
 
-  const request = await axios.get(
-    `https://api.spoonacular.com/recipes/${recipeId}/information`,
-    {
-      params: {
-        apiKey: apiKey,
-      },
-    }
-  );
-  if (request.data) {
+  const initCall = await fetch(
+    `/.netlify/functions/hideKeyDetail?recipeId=${recipeId}`
+  )
+  const request = await initCall.json();
+  console.log('request',request)
+  if (request) {
     const recipeSummary = document.querySelector(".recipeSummary");
-    const recipeName = request.data.title;
+    const recipeName = request.title;
     const ingredientList = document.querySelector(".ingredientList");
     const instructionsList = document.querySelector(".instructionsList");
     const dietList = document.querySelector(".dietList");
-    const recipeInstructions = request.data.analyzedInstructions[0].steps;
-    const recipeIngredients = request.data.extendedIngredients;
-    const recipeImage = request.data.image;
-    const recipeDiet = request.data.diets;
+    const recipeInstructions = request.analyzedInstructions[0].steps;
+    const recipeIngredients = request.extendedIngredients;
+    const recipeImage = request.image;
+    const recipeDiet = request.diets;
 
     recipeSummary.innerHTML = ` <div class="recipeDetailsImageHolder"> <img src="${recipeImage}" alt="${recipeName}">
  </div> <h3 class="recipeDetailsTitle">${recipeName}</h3> `;
-    console.log("recipe data", request.data);
+    console.log("recipe data", request);
     dietList.innerHTML = "";
     ingredientList.innerHTML = "";
     instructionsList.innerHTML = "";
