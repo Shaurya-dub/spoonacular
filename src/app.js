@@ -15,24 +15,14 @@ recipeForm.addEventListener("submit", async (e) => {
   document.querySelector(".loadingScreen").style.display = "flex";
   const cuisineList = cuisineFilterArray.join(",");
   const searchQuery = recipeSearchInput.value;
-  // const request = await axios
-  //   .get(`https://api.spoonacular.com/recipes/complexSearch`, {
-  //     params: {
-  //       apiKey: apiKey,
-  //       cuisine: cuisineList,
-  //       query: searchQuery,
-  //     },
-  //   })
   const initCall = await fetch(`/.netlify/functions/hideKey?cuisineList=${cuisineList}&searchQuery=${searchQuery}`)
   const request = await initCall.json()
     .catch((e) => {
-      console.error("uh-oh", e);
+      console.error("error", e);
       document.querySelector(".loadingScreen").style.display = "none";
     });
-    console.log('request is',request.json);
   if (request.results.length > 0) {
     const recipeResults = request.results;
-    console.log("req", recipeResults);
     recipeList.innerHTML = "";
     pageCount = Math.ceil(recipeResults.length / paginationLimit);
     // let currentPage
@@ -61,7 +51,6 @@ recipeForm.addEventListener("submit", async (e) => {
     console.error("empty response");
     document.querySelector(".loadingScreen").style.display = "none";
   }
-  //   const answer = await request.json();
 });
 
 const appendPageNumber = (index) => {
@@ -81,7 +70,6 @@ const getRecipeInfo = async (e) => {
     `/.netlify/functions/hideKeyDetail?recipeId=${recipeId}`
   )
   const request = await initCall.json();
-  console.log('request',request)
   if (request) {
     const recipeSummary = document.querySelector(".recipeSummary");
     const recipeName = request.title;
@@ -95,7 +83,6 @@ const getRecipeInfo = async (e) => {
 
     recipeSummary.innerHTML = ` <div class="recipeDetailsImageHolder"> <img src="${recipeImage}" alt="${recipeName}">
  </div> <h3 class="recipeDetailsTitle">${recipeName}</h3> `;
-    console.log("recipe data", request);
     dietList.innerHTML = "";
     ingredientList.innerHTML = "";
     instructionsList.innerHTML = "";
@@ -107,23 +94,14 @@ const getRecipeInfo = async (e) => {
     recipeIngredients.map((ing) => {
       const ingredientStr = `${ing.amount} ${ing.unit} ${ing.name}`;
       resultsLoop(ingredientList, ingredientStr);
-      // const listItem = document.createElement("li");
-      // listItem.innerText = `${ing.amount} ${ing.unit} ${ing.name}`;
-      // ingredientList.append(listItem);
     });
 
     recipeInstructions.map((rec) => {
-      console.log("new func");
       resultsLoop(instructionsList, rec.step);
-      // const listItem = document.createElement("li");
-      // listItem.innerText = rec.step;
-      // instructionsList.append(listItem);
     });
-    // instructions.innerHTML = recipeInstructions;
     document.addEventListener(
       "click",
       (e) => {
-        console.log(e.target);
         if (
           e.target.matches(".closeButton") ||
           !e.target.closest(".recipeDetailCard")
@@ -173,7 +151,6 @@ const setCurrentPage = (pageNum, recipes) => {
   const prevRange = (pageNum - 1) * paginationLimit;
   const currRange = pageNum * paginationLimit;
   recipes.forEach((item, index) => {
-    // console.log("in loop", item, index);
     item.classList.add("hidden");
     if (index >= prevRange && index < currRange) {
       item.classList.remove("hidden");
@@ -223,11 +200,9 @@ const handlePageButtonsStatus = () => {
 function checkboxSelect(e) {
   if (e.currentTarget.checked) {
     cuisineFilterArray.push(e.target.value);
-    console.log(cuisineFilterArray);
   } else {
     let removeItem = cuisineFilterArray.indexOf(e.target.value);
     cuisineFilterArray.splice(removeItem, 1);
-    console.log("non check", cuisineFilterArray);
   }
 }
 
